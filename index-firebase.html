@@ -76,7 +76,7 @@
     .card.lift:hover{transform:translateY(-10px) rotateX(0.8deg); box-shadow:0 30px 70px rgba(2,6,23,.6), 0 6px 30px rgba(59,130,246,.08)}
     .link{color:var(--brand);text-decoration:none;font-weight:700}
 
- 
+  
 
     .tilt{transform-style:preserve-3d;transition:transform .18s ease}
     .parallax-wrap{position:relative;overflow:visible}
@@ -210,6 +210,26 @@
       opacity:1;
       transform:translateY(0) scale(1);
     }
+
+    .section{padding:60px 0}
+    .container{width:90%;max-width:1200px;margin:auto}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s;position:relative;}
+    .card:hover{transform:translateY(-5px)}
+    .link{color:#007aff;text-decoration:none;font-weight:bold;margin-right:10px;}
+    .top-btns{position:absolute;top:10px;right:10px;display:flex;gap:5px;}
+    .top-btns button{border:none;padding:5px 8px;border-radius:5px;cursor:pointer;font-size:12px;color:#fff;}
+    .delete-btn{background:red;}
+    .edit-btn{background:orange;}
+    .add-btn{z-index:9999;width:60px;height:60px;position:fixed;bottom:40px;right:40px;background:#007aff;border-radius:50%;color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;padding:20px;}
+    .modal.show{opacity:1;pointer-events:auto;}
+    .modal-content{background:#fff;padding:25px;width:100%;max-width:400px;border-radius:10px;position:relative;}
+    input,textarea{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ddd;}
+    button{background:#007aff;color:#fff;border:0;padding:12px 18px;border-radius:8px;margin-top:12px;cursor:pointer;width:100%;font-size:16px;}
+    #previewFrame{width:100%;height:80vh;border:none;border-radius:10px;background:white;}
+    @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.cards{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -231,7 +251,7 @@
         <a href="#portfolio">Portfolio</a>
         <a href="#competitions">Tanlovlar</a>
         <a href="#team">Jamoa</a>
-        <a href="#testimonials">Ta’riflar</a>
+        <a href="#testimonials">Ta'riflar</a>
         <a href="#contact" class="btn btn-small">Aloqa</a>
       </nav>
 
@@ -241,22 +261,22 @@
     </div>
   </header>
 
- 
+  
   <section id="home" class="hero">
     <div class="container hero-inner">
       <div class="hero-copy reveal d1">
         <h1><span class="grad-text">Firdavs Raxmonov</span> — Backend & Full-stack developer</h1>
-        <p>Men Python/Django asosida barqaror va kengaytiriladigan backend yechimlari yarataman. Loyihalarim avtomatlashtirish, AI integratsiyasi va real biznes natijalariga yo‘naltirilgan.</p>
+        <p>Men Python/Django asosida barqaror va kengaytiriladigan backend yechimlari yarataman. Loyihalarim avtomatlashtirish, AI integratsiyasi va real biznes natijalariga yo'naltirilgan.</p>
 
         <div class="hero-ctas">
-          <a href="#portfolio" class="btn">Portfolio ko‘rish</a>
+          <a href="#portfolio" class="btn">Portfolio ko'rish</a>
           <button id="openContactTop" class="btn btn-ghost">Aloqa</button>
         </div>
 
         <div class="hero-badges" aria-hidden="true">
           <div class="badge"><strong data-target="12">0</strong><span>Rejalashtirilgan loyihalar</span></div>
           <div class="badge"><strong data-target="8">0</strong><span>Mamnun mijozlar</span></div>
-          <div class="badge"><strong>24/7</strong><span>Qo‘llab-quvvatlash</span></div>
+          <div class="badge"><strong>24/7</strong><span>Qo'llab-quvvatlash</span></div>
         </div>
       </div>
 
@@ -326,37 +346,13 @@
         </article>
 
         <article class="card lift reveal d3">
-          <h3>O‘qitish va Mentorlik</h3>
+          <h3>O'qitish va Mentorlik</h3>
           <p>Amaliy kurslar: Backend, Django, AI asoslari.</p>
-          <a class="link" href="#contact">Ro‘yxatdan o‘tish →</a>
+          <a class="link" href="#contact">Ro'yxatdan o'tish →</a>
         </article>
       </div>
     </div>
   </section>
-
-
-
-<style>
-.section{padding:60px 0}
-.container{width:90%;max-width:1200px;margin:auto}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s;position:relative;}
-.card:hover{transform:translateY(-5px)}
-.link{color:#007aff;text-decoration:none;font-weight:bold;margin-right:10px;}
-.top-btns{position:absolute;top:10px;right:10px;display:flex;gap:5px;}
-.top-btns button{border:none;padding:5px 8px;border-radius:5px;cursor:pointer;font-size:12px;color:#fff;}
-.delete-btn{background:red;}
-.edit-btn{background:orange;}
-.add-btn{z-index:9999;width:60px;height:60px;position:fixed;bottom:40px;right:40px;background:#007aff;border-radius:50%;color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;padding:20px;}
-.modal.show{opacity:1;pointer-events:auto;}
-.modal-content{background:#fff;padding:25px;width:100%;max-width:400px;border-radius:10px;position:relative;}
-input,textarea{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ddd;}
-button{background:#007aff;color:#fff;border:0;padding:12px 18px;border-radius:8px;margin-top:12px;cursor:pointer;width:100%;font-size:16px;}
-#previewFrame{width:100%;height:80vh;border:none;border-radius:10px;background:white;}
-@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.cards{grid-template-columns:1fr}}
-</style>
 
 
 <section id="portfolio" class="section">
@@ -398,7 +394,7 @@ const db = firebase.firestore();
 
 <div id="addModal" class="modal">
   <div class="modal-content">
-    <h3 id="modalTitle">Yangi loyiha qo‘shish</h3>
+    <h3 id="modalTitle">Yangi loyiha qo'shish</h3>
     <input type="text" id="pTitle" placeholder="Loyiha nomi">
     <textarea id="pDesc" placeholder="Loyiha ta'rifi"></textarea>
     <input type="text" id="pLink" placeholder="Loyiha linkini kiriting (https://...)">
@@ -450,7 +446,7 @@ function checkCode(){
   const code=document.getElementById("adminCode").value;
   if(code===ADMIN_PASSWORD){
     loginModal.classList.remove("show");
-    modalTitle.innerText="Yangi loyiha qo‘shish";
+    modalTitle.innerText="Yangi loyiha qo'shish";
     editingIndex=null;
     document.getElementById("pTitle").value="";
     document.getElementById("pDesc").value="";
@@ -459,27 +455,33 @@ function checkCode(){
   } else { alert("Xato kod!"); }
 }
 
-function saveProject(){
+async function saveProject(){
   const title=document.getElementById("pTitle").value.trim();
   const desc=document.getElementById("pDesc").value.trim();
   const link=document.getElementById("pLink").value.trim();
-  if(!title || !desc || !link){ alert("Hamma maydonlarni to‘ldiring!"); return; }
-  if(editingIndex!==null){ projects[editingIndex]={title,desc,link}; }
-  else{ projects.push({title,desc,link}); }
-  localStorage.setItem("projects", JSON.stringify(projects));
-  addModal.classList.remove("show");
-  document.getElementById("pTitle").value="";
-  document.getElementById("pDesc").value="";
-  document.getElementById("pLink").value="";
-  editingIndex=null;
-  loadProjects();
+  if(!title || !desc || !link){ alert("Hamma maydonlarni to'ldiring!"); return; }
+  
+  try {
+    if(editingIndex!==null){
+      await db.collection("projects").doc(projects[editingIndex].id).update({title,desc,link});
+    } else {
+      await db.collection("projects").add({title,desc,link,createdAt:new Date()});
+    }
+    addModal.classList.remove("show");
+    document.getElementById("pTitle").value="";
+    document.getElementById("pDesc").value="";
+    document.getElementById("pLink").value="";
+    editingIndex=null;
+    loadProjects();
+  } catch(e){ alert("Xato: "+e.message); }
 }
 
-function deleteProject(i){
-  if(confirm("Loyihani o‘chirishni xohlaysizmi?")){
-    projects.splice(i,1);
-    localStorage.setItem("projects",JSON.stringify(projects));
-    loadProjects();
+async function deleteProject(i){
+  if(confirm("Loyihani o'chirishni xohlaysizmi?")){
+    try {
+      await db.collection("projects").doc(projects[i].id).delete();
+      loadProjects();
+    } catch(e){ alert("Xato: "+e.message); }
   }
 }
 
@@ -495,117 +497,114 @@ function editProject(i){
 
 
 
+ 
+  <section id="competitions" class="section">
+    <div class="container">
+      <header>
+        <h2>Qatnashgan tanlovlar</h2>
+        <p>Men ishtirok etgan hackathon, texnologik va innovatsion tanlovlar.</p>
+      </header>
 
-</head>
+      <div class="comp-grid">
 
-<body>
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="IMAGE 2025-12-03 21:54:20.jpg" alt="">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">PDP Startup</div>
+            <div class="comp-sub">Yangi startap g'oyalar hackathoni</div>
+          </div>
+          <div class="details">Innovatsion g'oyalar ishlab chiqish va pitch taqdimoti.</div>
+        </div>
 
-  <div class="container">
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="/media/competitions/uzcosmos.jpg"
+                 onerror="this.src='';this.style.background='linear-gradient(135deg,#00d2ff,#3b82f6)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">UzCosmos</div>
+            <div class="comp-sub">Kosmik texnologiyalar bo'yicha tanlov</div>
+          </div>
+          <div class="details">Aqlli kosmik yechimlar prototipi.</div>
+        </div>
 
-    <header>
-      <h2>Qatnashgan tanlovlar</h2>
-      <p>Men ishtirok etgan hackathon, texnologik va innovatsion tanlovlar.</p>
-    </header>
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="/media/competitions/cbu_cc2025.jpg"
+                 onerror="this.src='';this.style.background='linear-gradient(135deg,#ffd86b,#ff7a7a)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">CBU Coding Challenge</div>
+            <div class="comp-sub">Algoritmlar va kodlash</div>
+          </div>
+          <div class="details">Katta algoritmik masalalar musobaqasi.</div>
+        </div>
 
-    <div class="comp-grid">
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="/media/competitions/urbantech.jpg"
+                 onerror="this.src='';this.style.background='linear-gradient(135deg,#7c3aed,#06b6d4)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">UrbanTech</div>
+            <div class="comp-sub">Aqlli shahar texnologiyalari</div>
+          </div>
+          <div class="details">Transport, ekologiya va AI asosida yechimlar.</div>
+        </div>
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="IMAGE 2025-12-03 21:54:20.jpg" alt="">
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="IMAGE 2025-12-03 21:54:25.jpg" alt="">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">Odoo Hackathon</div>
+            <div class="comp-sub">ERP tizim integratsiyasi</div>
+          </div>
+          <div class="details">Odoo modullarini ishlab chiqish.</div>
         </div>
-        <div class="comp-body">
-          <div class="comp-title">PDP Startup</div>
-          <div class="comp-sub">Yangi startap g‘oyalar hackathoni</div>
-        </div>
-        <div class="details">Innovatsion g‘oyalar ishlab chiqish va pitch taqdimoti.</div>
-      </div>
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="/media/competitions/uzcosmos.jpg"
-               onerror="this.src='';this.style.background='linear-gradient(135deg,#00d2ff,#3b82f6)'">
-        </div>
-        <div class="comp-body">
-          <div class="comp-title">UzCosmos</div>
-          <div class="comp-sub">Kosmik texnologiyalar bo‘yicha tanlov</div>
-        </div>
-        <div class="details">Aqlli kosmik yechimlar prototipi.</div>
-      </div>
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="IMAGE 2025-12-03 21:56:41.jpg" alt="">
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="/media/competitions/cbu_cc2025.jpg"
-               onerror="this.src='';this.style.background='linear-gradient(135deg,#ffd86b,#ff7a7a)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">Click Fintech</div>
+            <div class="comp-sub">UX & Fintech loyihalar</div>
+          </div>
+          <div class="details">Foydalanuvchi tajribasi va konversiya oshirish.</div>
         </div>
-        <div class="comp-body">
-          <div class="comp-title">CBU Coding Challenge</div>
-          <div class="comp-sub">Algoritmlar va kodlash</div>
-        </div>
-        <div class="details">Katta algoritmik masalalar musobaqasi.</div>
-      </div>
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="/media/competitions/urbantech.jpg"
-               onerror="this.src='';this.style.background='linear-gradient(135deg,#7c3aed,#06b6d4)'">
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="/media/competitions/ai500.jpg"
+                 onerror="this.src='';this.style.background='linear-gradient(135deg,#06b6d4,#7c3aed)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">AI500</div>
+            <div class="comp-sub">Sun'iy intellekt tanlovi</div>
+          </div>
+          <div class="details">Machine Learning, Vision va AI muammolari.</div>
         </div>
-        <div class="comp-body">
-          <div class="comp-title">UrbanTech</div>
-          <div class="comp-sub">Aqlli shahar texnologiyalari</div>
-        </div>
-        <div class="details">Transport, ekologiya va AI asosida yechimlar.</div>
-      </div>
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="IMAGE 2025-12-03 21:54:25.jpg" alt="">
+        <div class="comp-card">
+          <div class="comp-img">
+            <img src="/media/competitions/devfest.jpg"
+                 onerror="this.src='';this.style.background='linear-gradient(135deg,#22c55e,#3b82f6)'">
+          </div>
+          <div class="comp-body">
+            <div class="comp-title">DevFest</div>
+            <div class="comp-sub">Google Developer Community</div>
+          </div>
+          <div class="details">Tech talks, networking va hackathon.</div>
         </div>
-        <div class="comp-body">
-          <div class="comp-title">Odoo Hackathon</div>
-          <div class="comp-sub">ERP tizim integratsiyasi</div>
-        </div>
-        <div class="details">Odoo modullarini ishlab chiqish.</div>
-      </div>
 
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="IMAGE 2025-12-03 21:56:41.jpg" alt="">
-
-        </div>
-        <div class="comp-body">
-          <div class="comp-title">Click Fintech</div>
-          <div class="comp-sub">UX & Fintech loyihalar</div>
-        </div>
-        <div class="details">Foydalanuvchi tajribasi va konversiya oshirish.</div>
-      </div>
-
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="/media/competitions/ai500.jpg"
-               onerror="this.src='';this.style.background='linear-gradient(135deg,#06b6d4,#7c3aed)'">
-        </div>
-        <div class="comp-body">
-          <div class="comp-title">AI500</div>
-          <div class="comp-sub">Sun’iy intellekt tanlovi</div>
-        </div>
-        <div class="details">Machine Learning, Vision va AI muammolari.</div>
-      </div>
-
-      <div class="comp-card">
-        <div class="comp-img">
-          <img src="/media/competitions/devfest.jpg"
-               onerror="this.src='';this.style.background='linear-gradient(135deg,#22c55e,#3b82f6)'">
-        </div>
-        <div class="comp-body">
-          <div class="comp-title">DevFest</div>
-          <div class="comp-sub">Google Developer Community</div>
-        </div>
-        <div class="details">Tech talks, networking va hackathon.</div>
       </div>
 
     </div>
-
-  </div>
+  </section>
 
 <section id="testimonials" class="section alt">
   <div class="container">
@@ -639,20 +638,20 @@ function editProject(i){
 <section id="faq" class="section">
   <div class="container">
     <header class="section-head reveal">
-      <h2>Ko‘p so‘raladigan savollar</h2>
-      <p>Agar yana savollar bo‘lsa — bemalol bog‘laning!</p>
+      <h2>Ko'p so'raladigan savollar</h2>
+      <p>Agar yana savollar bo'lsa — bemalol bog'laning!</p>
     </header>
 
     <div class="faq">
 
       <details class="faq-item reveal">
         <summary>Loyihani qanday boshlaysiz?</summary>
-        <p>1️⃣ Talablarni tahlil qilish → 2️⃣ Texnik reja → 3️⃣ Dizayn → 4️⃣ Backend & Frontend → 5️⃣ Test → 6️⃣ Ishga tushirish → 7️⃣ Qo‘llab-quvvatlash</p>
+        <p>1️⃣ Talablarni tahlil qilish → 2️⃣ Texnik reja → 3️⃣ Dizayn → 4️⃣ Backend & Frontend → 5️⃣ Test → 6️⃣ Ishga tushirish → 7️⃣ Qo'llab-quvvatlash</p>
       </details>
 
       <details class="faq-item reveal d1">
         <summary>Umumiy vaqt qancha ketadi?</summary>
-        <p>MVP: 2–4 hafta → To‘liq loyiha: 1–3 oy (funksiyalar soniga qarab).</p>
+        <p>MVP: 2–4 hafta → To'liq loyiha: 1–3 oy (funksiyalar soniga qarab).</p>
       </details>
 
       <details class="faq-item reveal d2">
@@ -661,17 +660,17 @@ function editProject(i){
       </details>
 
       <details class="faq-item reveal d3">
-        <summary>Dizayn ham o‘zingiz tomondan qilinadimi?</summary>
-        <p>Ha, UI/UX dizayn prototipdan boshlab to yakuniy variantgacha tayyorlab beriladi. Istak bo‘lsa, mijozning dizayni ham qabul qilinadi.</p>
+        <summary>Dizayn ham o'zingiz tomondan qilinadimi?</summary>
+        <p>Ha, UI/UX dizayn prototipdan boshlab to yakuniy variantgacha tayyorlab beriladi. Istak bo'lsa, mijozning dizayni ham qabul qilinadi.</p>
       </details>
 
       <details class="faq-item reveal d4">
-        <summary>Ish tugagandan keyin qo‘llab-quvvatlash bo‘ladimi?</summary>
+        <summary>Ish tugagandan keyin qo'llab-quvvatlash bo'ladimi?</summary>
         <p>Albatta! Loyihadan keyin ham yangilanishlar, server kuzatuvi va xatolarni tuzatish xizmatlari mavjud.</p>
       </details>
 
       <details class="faq-item reveal d5">
-        <summary>To‘lov qanday amalga oshiriladi?</summary>
+        <summary>To'lov qanday amalga oshiriladi?</summary>
         <p>50% — loyiha boshlanishida, 50% — yakunlanishida. Hujjatlar va shartnoma rasmiylashtiriladi.</p>
       </details>
 
@@ -686,7 +685,7 @@ function editProject(i){
     <div class="container">
       <header class="section-head reveal">
         <h2>Aloqa</h2>
-        <p>Tez bog‘lanish — kelajakdagi hamkorlik uchun.</p>
+        <p>Tez bog'lanish — kelajakdagi hamkorlik uchun.</p>
       </header>
 
       <div class="chips reveal">
@@ -711,11 +710,11 @@ function editProject(i){
   <div class="modal" id="contactModal" aria-hidden="true">
     <div class="modal-box">
       <button class="modal-close" id="closeContact" aria-label="Yopish">✕</button>
-      <h3>Biz bilan bog‘laning</h3>
+      <h3>Biz bilan bog'laning</h3>
       <p style="color:var(--muted)">Telegram yoki telefon orqali tez bog'lanish mumkin.</p>
       <div style="display:flex;gap:12px;justify-content:center;margin-top:12px">
         <a class="btn" href="https://t.me/Raxmonov_013" target="_blank" rel="noopener">Telegram</a>
-        <a class="btn btn-ghost" href="tel:+998949386938">Qo‘ng‘iroq</a>
+        <a class="btn btn-ghost" href="tel:+998949386938">Qo'ng'iroq</a>
       </div>
     </div>
   </div>
