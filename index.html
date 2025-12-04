@@ -335,193 +335,143 @@
   </section>
 
 
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Portfolio</title>
-  <style>
-    /* siz avvalgi CSS-ni shu yerga joylang */
-    .section{padding:60px 0}
-    .container{width:90%;max-width:1200px;margin:auto}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s;position:relative;}
-    .card:hover{transform:translateY(-5px)}
-    .link{color:#007aff;text-decoration:none;font-weight:bold;margin-right:10px;}
-    .top-btns{position:absolute;top:10px;right:10px;display:flex;gap:5px;}
-    .top-btns button{border:none;padding:5px 8px;border-radius:5px;cursor:pointer;font-size:12px;color:#fff;}
-    .delete-btn{background:red;}
-    .edit-btn{background:orange;}
-    .add-btn{z-index:9999;width:60px;height:60px;position:fixed;bottom:40px;right:40px;background:#007aff;border-radius:50%;color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;padding:20px;}
-    .modal.show{opacity:1;pointer-events:auto;}
-    .modal-content{background:#fff;padding:25px;width:100%;max-width:400px;border-radius:10px;position:relative;}
-    input,textarea{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ddd;}
-    button{background:#007aff;color:#fff;border:0;padding:12px 18px;border-radius:8px;margin-top:12px;cursor:pointer;width:100%;font-size:16px;}
-  </style>
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-</head>
-<body>
-  <section id="portfolio" class="section">
-    <div class="container">
-      <header class="section-head">
-        <h2>Portfolio</h2>
-        <p>Mening loyihalarim — tomosha va yuklab olish mumkin.</p>
-      </header>
-      <div id="projectList" class="cards"></div>
-    </div>
-  </section>
 
-  <div class="add-btn" onclick="openLogin()">+</div>
+<style>
+.section{padding:60px 0}
+.container{width:90%;max-width:1200px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{padding:20px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);transition:.3s;position:relative;}
+.card:hover{transform:translateY(-5px)}
+.link{color:#007aff;text-decoration:none;font-weight:bold;margin-right:10px;}
+.top-btns{position:absolute;top:10px;right:10px;display:flex;gap:5px;}
+.top-btns button{border:none;padding:5px 8px;border-radius:5px;cursor:pointer;font-size:12px;color:#fff;}
+.delete-btn{background:red;}
+.edit-btn{background:orange;}
+.add-btn{z-index:9999;width:60px;height:60px;position:fixed;bottom:40px;right:40px;background:#007aff;border-radius:50%;color:#fff;font-size:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:0.3s;padding:20px;}
+.modal.show{opacity:1;pointer-events:auto;}
+.modal-content{background:#fff;padding:25px;width:100%;max-width:400px;border-radius:10px;position:relative;}
+input,textarea{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ddd;}
+button{background:#007aff;color:#fff;border:0;padding:12px 18px;border-radius:8px;margin-top:12px;cursor:pointer;width:100%;font-size:16px;}
+#previewFrame{width:100%;height:80vh;border:none;border-radius:10px;background:white;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+</style>
 
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <h3>Kirish kodi</h3>
-      <input type="password" id="adminCode" placeholder="Maxfiy kodni kiriting">
-      <button type="button" onclick="checkCode()">Kirish</button>
-    </div>
+
+<section id="portfolio" class="section">
+  <div class="container">
+    <header class="section-head">
+      <h2>Portfolio</h2>
+      <p>Mening loyihalarim — tomosha va yuklab olish mumkin.</p>
+    </header>
+    <div id="projectList" class="cards"></div>
   </div>
+</section>
 
-  <div id="addModal" class="modal">
-    <div class="modal-content">
-      <h3 id="modalTitle">Yangi loyiha qo‘shish</h3>
-      <input type="text" id="pTitle" placeholder="Loyiha nomi">
-      <textarea id="pDesc" placeholder="Loyiha ta'rifi"></textarea>
-      <input type="text" id="pLink" placeholder="Loyiha linkini kiriting (https://...)">
-      <button type="button" onclick="saveProject()">Saqlash</button>
-    </div>
+<div class="add-btn" onclick="openLogin()">+</div>
+
+
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <h3>Kirish kodi</h3>
+    <input type="password" id="adminCode" placeholder="Maxfiy kodni kiriting">
+    <button type="button" onclick="checkCode()">Kirish</button>
   </div>
+</div>
 
-  <script>
-    // Firebase config — bu yerga o'zingizning config kiritasiz
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      // ...
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
 
-    const ADMIN_PASSWORD = "1029384756";
-    let isAdmin = false;
-    let editingId = null;
+<div id="addModal" class="modal">
+  <div class="modal-content">
+    <h3 id="modalTitle">Yangi loyiha qo‘shish</h3>
+    <input type="text" id="pTitle" placeholder="Loyiha nomi">
+    <textarea id="pDesc" placeholder="Loyiha ta'rifi"></textarea>
+    <input type="text" id="pLink" placeholder="Loyiha linkini kiriting (https://...)">
+    <button type="button" onclick="saveProject()">Saqlash</button>
+  </div>
+</div>
 
-    const loginModal = document.getElementById("loginModal");
-    const addModal = document.getElementById("addModal");
-    const projectList = document.getElementById("projectList");
-    const modalTitle = document.getElementById("modalTitle");
+<script>
+const ADMIN_PASSWORD="1029384756";
+let editingIndex=null;
+const loginModal=document.getElementById("loginModal");
+const addModal=document.getElementById("addModal");
+const projectList=document.getElementById("projectList");
+const modalTitle=document.getElementById("modalTitle");
 
-    function openLogin(){
-      loginModal.classList.add("show");
-    }
+let projects=[];
 
-    function checkCode(){
-      const code = document.getElementById("adminCode").value;
-      if(code === ADMIN_PASSWORD){
-        isAdmin = true;
-        loginModal.classList.remove("show");
-        modalTitle.innerText = "Yangi loyiha qo‘shish";
-        editingId = null;
-        document.getElementById("pTitle").value = "";
-        document.getElementById("pDesc").value = "";
-        document.getElementById("pLink").value = "";
-        addModal.classList.add("show");
-      } else {
-        alert("Xato kod!");
-      }
-    }
+function loadProjects(){
+  try { projects=JSON.parse(localStorage.getItem("projects")) || []; }
+  catch(e){ projects=[]; }
+  projectList.innerHTML="";
+  projects.forEach((p,i)=>{
+    let fileLink='';
+    if(p.link){ fileLink=`<a class="link" href="${p.link}" target="_blank">Tomosha →</a>`; }
+    projectList.innerHTML+=`
+      <article class="card">
+        <div class="top-btns">
+          <button class="edit-btn" onclick="editProject(${i})">✏️</button>
+          <button class="delete-btn" onclick="deleteProject(${i})">🗑️</button>
+        </div>
+        <h4>${p.title}</h4>
+        <p>${p.desc}</p>
+        ${fileLink}
+      </article>`;
+  });
+}
 
-    function renderProjects(docs){
-      projectList.innerHTML = "";
-      docs.forEach(doc => {
-        const p = doc.data();
-        const id = doc.id;
+loadProjects();
 
-        let fileLink = "";
-        if(p.link){
-          fileLink = `<a class="link" href="${p.link}" target="_blank">Tomosha →</a>`;
-        }
+function openLogin(){loginModal.classList.add("show");}
 
-        const topBtns = isAdmin ? `
-          <div class="top-btns">
-            <button class="edit-btn" onclick="editProject('${id}', '${p.title}', '${p.desc}', '${p.link}')">✏️</button>
-            <button class="delete-btn" onclick="deleteProject('${id}')">🗑️</button>
-          </div>` : "";
+function checkCode(){
+  const code=document.getElementById("adminCode").value;
+  if(code===ADMIN_PASSWORD){
+    loginModal.classList.remove("show");
+    modalTitle.innerText="Yangi loyiha qo‘shish";
+    editingIndex=null;
+    document.getElementById("pTitle").value="";
+    document.getElementById("pDesc").value="";
+    document.getElementById("pLink").value="";
+    addModal.classList.add("show");
+  } else { alert("Xato kod!"); }
+}
 
-        projectList.innerHTML += `
-          <article class="card">
-            ${topBtns}
-            <h4>${p.title}</h4>
-            <p>${p.desc}</p>
-            ${fileLink}
-          </article>
-        `;
-      });
-    }
+function saveProject(){
+  const title=document.getElementById("pTitle").value.trim();
+  const desc=document.getElementById("pDesc").value.trim();
+  const link=document.getElementById("pLink").value.trim();
+  if(!title || !desc || !link){ alert("Hamma maydonlarni to‘ldiring!"); return; }
+  if(editingIndex!==null){ projects[editingIndex]={title,desc,link}; }
+  else{ projects.push({title,desc,link}); }
+  localStorage.setItem("projects", JSON.stringify(projects));
+  addModal.classList.remove("show");
+  document.getElementById("pTitle").value="";
+  document.getElementById("pDesc").value="";
+  document.getElementById("pLink").value="";
+  editingIndex=null;
+  loadProjects();
+}
 
-    function loadProjects(){
-      db.collection("projects").orderBy("createdAt","desc").get()
-        .then(snapshot => {
-          renderProjects(snapshot.docs);
-        });
-    }
+function deleteProject(i){
+  if(confirm("Loyihani o‘chirishni xohlaysizmi?")){
+    projects.splice(i,1);
+    localStorage.setItem("projects",JSON.stringify(projects));
+    loadProjects();
+  }
+}
 
-    function saveProject(){
-      const title = document.getElementById("pTitle").value.trim();
-      const desc = document.getElementById("pDesc").value.trim();
-      const link = document.getElementById("pLink").value.trim();
-      if(!title || !desc || !link){
-        alert("Hamma maydonlarni to‘ldiring!");
-        return;
-      }
+function editProject(i){
+  document.getElementById("pTitle").value=projects[i].title;
+  document.getElementById("pDesc").value=projects[i].desc;
+  document.getElementById("pLink").value=projects[i].link;
+  editingIndex=i;
+  modalTitle.innerText="Loyihani tahrirlash";
+  addModal.classList.add("show");
+}
+</script>
 
-      const data = {
-        title,
-        desc,
-        link,
-        createdAt: firebase.firestore.Timestamp.now()
-      };
-
-      if(editingId){
-        db.collection("projects").doc(editingId).update(data).then(() => {
-          addModal.classList.remove("show");
-          loadProjects();
-        });
-      } else {
-        db.collection("projects").add(data).then(() => {
-          addModal.classList.remove("show");
-          loadProjects();
-        });
-      }
-    }
-
-    function editProject(id, title, desc, link){
-      if(!isAdmin) return;
-      editingId = id;
-      modalTitle.innerText = "Loyihani tahrirlash";
-      document.getElementById("pTitle").value = title;
-      document.getElementById("pDesc").value = desc;
-      document.getElementById("pLink").value = link;
-      addModal.classList.add("show");
-    }
-
-    function deleteProject(id){
-      if(!isAdmin) return;
-      if(confirm("Loyihani o‘chirishni xohlaysizmi?")){
-        db.collection("projects").doc(id).delete().then(() => {
-          loadProjects();
-        });
-      }
-    }
-
-    // sahifa yuklanganda
-    window.addEventListener("DOMContentLoaded", loadProjects);
-  </script>
-</body>
-</html>
 
 
 
